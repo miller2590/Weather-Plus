@@ -1,17 +1,23 @@
 from tkinter import *
 import requests
 import json
-from PIL import ImageTk, Image
-import datetime
+from configparser import ConfigParser
+
+# Config
+config_file = 'config.ini'
+config = ConfigParser()
+config.read(config_file)
+api_key = config['gfg']['api']
+url = 'api.openweathermap.org/data/2.5/weather?q={}&appid={}'
 
 # Creating root Object
 root = Tk()
 root.title('Weather Plus')
 root.geometry("550x800")
-root['background'] = "white"
+root.configure(background="white")
 
-frame = Frame()
-frame.pack()
+frame = Frame(master=root)
+frame.pack(fill=X)
 
 # Creating button labels
 city_label = Label(
@@ -29,7 +35,7 @@ city_entry.pack()
 
 # Creating submit button
 submit_btn = Button(
-    text="Submit",
+    text="Search",
     master=frame,
     width=5,
     height=0,
@@ -40,5 +46,6 @@ submit_btn.pack()
 
 city_name = city_entry.get()
 
-root.mainloop()
 
+
+mainloop()
