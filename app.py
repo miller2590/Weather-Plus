@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 import requests
-import json
 from math import floor
 from configparser import ConfigParser
 
@@ -38,7 +37,7 @@ def search():
     if weather:
         location_label['text'] = f"{weather[0]}"
         temperature_label['text'] = str(weather[1]) + " Degrees"
-        description_label['text'] = str(weather[2])
+        description_label['text'] = str(weather[2]).capitalize()
     else:
         messagebox.showerror(f"{city} not found")
 
@@ -54,6 +53,7 @@ root.configure(background="white")
 city_label = Label(
     text="Enter City Name",
     fg="black",
+    bg="white",
     width=13,
     height=1
 )
