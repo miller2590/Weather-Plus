@@ -2,14 +2,9 @@ from tkinter import *
 from tkinter import messagebox
 import requests
 from math import floor
-from configparser import ConfigParser
+from config import *
 
-# Config
-config_file = 'config.ini'
-config = ConfigParser()
-config.read(config_file)
-api_key = config['gfg']['api']
-url = 'http://api.openweathermap.org/data/2.5/weather?q={}&appid={}'
+
 
 
 # Getting weather details
