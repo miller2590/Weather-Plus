@@ -21,10 +21,9 @@ def sort_weather(city):
         template = source.json()
         city = template['name']
         temp_kelvin = template['main']['temp']
-        temp_fahrenheit = floor((temp_kelvin - 273.15) * 9 / 5 + 32)
-        weather = template['weather'][0]['main']
+        temp_fahrenheit = floor((temp_kelvin - 273.15) * 1.8 + 32)
         weather_description = template['weather'][0]['description']
-        group = [city, temp_fahrenheit, weather, weather_description]
+        group = [city, temp_fahrenheit, weather_description]
 
         return group
     else:
@@ -39,7 +38,7 @@ def search():
     if weather:
         location_label['text'] = f"{weather[0]}"
         temperature_label['text'] = str(weather[1]) + " Degrees"
-        description_label['text'] = str(weather[2]) + " " + str(weather[3])
+        description_label['text'] = str(weather[2])
     else:
         messagebox.showerror(f"{city} not found")
 
