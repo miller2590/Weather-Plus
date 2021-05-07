@@ -7,24 +7,24 @@ from tkinter import messagebox
 # Creating root Object
 root = Tk()
 root.title('Weather Plus')
-root.geometry("550x800")
-root.configure(background="white")
+root.geometry("300x300")
+root.configure(background="light sky blue")
 
 
 class App:
 
     def __init__(self, master):
-        frame = Frame(master)
-        frame.pack()
 
         # Creating Search label
         self.city_label = Label(
+            master,
             text="Enter City Name",
-            fg="black",
-            bg="white",
+            fg="white",
+            bg="#0d6efd",
             width=13,
             height=1
         )
+        self.city_label.configure(borderwidth=2)
         self.city_label.pack()
 
         # Creating text entry
@@ -33,26 +33,36 @@ class App:
         self.city_entry.pack()
 
         # Creating location label
-        self.location_label = Label(master, text="City", font={'bold', 20})
+        self.location_label = Label(master,
+                                    bg="#0d6efd",
+                                    fg='white')
         self.location_label.pack()
 
         # Creating temperature label
-        self.temperature_label = Label(master, text="")
+        self.temperature_label = Label(master,
+                                       bg="#0d6efd",
+                                       fg='white'
+                                       )
         self.temperature_label.pack()
 
         # Crating description label
-        self.description_label = Label(master, text="")
+        self.description_label = Label(master,
+                                       bg="#0d6efd",
+                                       fg='white'
+                                       )
         self.description_label.pack()
 
         # Creating submit button
         self.submit_btn = Button(
+            master,
             text="Search",
             command=self.search,
             width=5,
             height=0,
-            fg="black",
-            bg="#3ACDFF"
+            fg="white",
+            bg="#0d6efd"
         )
+        self.submit_btn.configure(relief='raised', borderwidth=2)
         self.submit_btn.pack()
 
     # Getting weather details
@@ -82,4 +92,5 @@ class App:
             self.temperature_label['text'] = str(weather[1]) + " Degrees"
             self.description_label['text'] = str(weather[2]).capitalize()
         else:
-            messagebox.showerror(f"{city} not found")
+            messagebox.showerror("Error",
+                                 f"{city} not found")
